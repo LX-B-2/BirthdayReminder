@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/design_default_color_on_primary"
+    android:id="@+id/main_layout_root">
+
+    <TextView
+        android:id="@+id/button_list"
+        style="@style/Widget.AppCompat.Button.Borderless"
+
+        android:tag="0"
+
+        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:background="@drawable/rectangle"
+
+        android:minWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_calendar"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:text="List"
+        android:textColor="@color/design_default_color_primary"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:onClick="clickEffect"/>
+
+    <TextView
+        android:id="@+id/button_calendar"
+        style="@style/Widget.AppCompat.Button.Borderless"
+
+        android:tag="0"
+
+        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:background="@drawable/rectangle"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_settings"
+        app:layout_constraintStart_toEndOf="@id/button_list"
+
+        android:text="Calendar"
+        android:textColor="@color/text_grey"
+        android:gravity="center"
+
+        android:onClick="clickEffect"/>
+
+    <TextView
+        android:id="@+id/button_settings"
+        style="@style/Widget.AppCompat.Button.Borderless"
+
+        android:tag="0"
+
+        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:background="@drawable/rectangle"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_calendar"
+
+        android:text="Settings"
+        android:textColor="@color/text_grey"
+        android:gravity="center"
+
+        android:onClick="clickEffect"/>
+
+
+    <View
+        android:id="@+id/animated_bar_bottom"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/design_default_color_primary"
+        app:layout_constraintBottom_toTopOf="@id/button_calendar"
+        app:layout_constraintEnd_toEndOf="@+id/button_list"
+        app:layout_constraintStart_toStartOf="@+id/button_list"/>
+
+    <ScrollView
+        android:id="@+id/entry_list_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_calendar">
+
+        <LinearLayout
+            android:id="@+id/entry_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

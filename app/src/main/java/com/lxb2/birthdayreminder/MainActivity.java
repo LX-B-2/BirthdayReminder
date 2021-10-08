@@ -13,6 +13,7 @@ import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,9 +21,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private static Point screenSize;
+    private ArrayList<Reminder> reminders;
 
 
     @Override
@@ -35,8 +39,15 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         screenSize = new Point(metrics.widthPixels, metrics.heightPixels);
 
+        // initiate variables
+        reminders = new ArrayList<>();
+        reminders.add(new Reminder("test1"));
+
+        setupListView();
+
         // call necessary setup functions
         createNotificationChannel();
+
         addReminderAt(System.currentTimeMillis());
     }
 
@@ -58,6 +69,20 @@ public class MainActivity extends AppCompatActivity {
                     time,
                     pendingIntent);
         });
+    }
+
+
+    private void setupListView() {
+        setContentView(R.layout.activity_main);
+
+        LinearLayout linearLayout = findViewById(R.id.entry_list);
+
+        for (Reminder reminder : reminders) {
+            TextView textView = new TextView(this);
+            textView.setText(reminder.getName());
+            textView.setTextColor(getColor(R.color.text_grey));
+            linearLayout.addView(textView);
+        }
     }
 
 

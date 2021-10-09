@@ -1,16 +1,17 @@
 package com.lxb2.birthdayreminder;
 
-import java.time.LocalDateTime;
+import java.util.Calendar;
 
 public class Reminder {
-    private LocalDateTime DateTime;
+    private Calendar calendar;
+    private String name;
 
-    public LocalDateTime getDateTime() {
-        return DateTime;
+    public Calendar getCalendar() {
+        return calendar;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        DateTime = dateTime;
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
     }
 
     public String getName() {
@@ -21,16 +22,8 @@ public class Reminder {
         this.name = name;
     }
 
-    private String name;
-
-
-    public Reminder(LocalDateTime dateTime, String name) {
-        DateTime = dateTime;
-        this.name = name;
-    }
-
-    //todo: remove this constructor
-    public Reminder(String name) {
+    public Reminder(Calendar calendar, String name) {
+        this.calendar = calendar;
         this.name = name;
     }
 }
